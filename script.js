@@ -1,6 +1,7 @@
-let playerName = prompt("Hello! Welcome to Rock Paper Scissors. What's your name?");
+const playerName = prompt("Hello! Welcome to Rock Paper Scissors. What's your name?");
 
-alert(`Nice to meet you ${playerName}! I hope you have fun with our game!`);
+alert(`Nice to meet you ${playerName}! The rules are very simple:`);
+alert("Rock beats scissors;\nPaper beats rock;\nScissors beats paper.\nHave fun!");
 
 let computerChoice;
 function getComputerChoice() {
@@ -26,45 +27,54 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      console.log("It's a tie.");
+      alert("It's a tie.");
       return tieCount += 1;
     } else if (computerChoice === "paper") {
-      console.log(`Player lost! ${computerChoice} beats ${playerChoice}.`);
+      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
       return computerWinCount += 1;
     } else if (computerChoice === "scissors") {
-      console.log(`Player won! ${playerChoice} beats ${computerChoice}.`);
+      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
       return playerWinCount += 1;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      console.log(`Player won! ${playerChoice} beats ${computerChoice}.`);
+      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
       return playerWinCount += 1;
     } else if (computerChoice === "paper") {
-      console.log("It's a tie.");
+      alert("It's a tie.");
       return tieCount += 1;
     } else if (computerChoice === "scissors") {
-      console.log(`Player lost! ${computerChoice} beats ${playerChoice}.`);
+      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
       return computerWinCount += 1;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      console.log(`Player lost! ${computerChoice} beats ${playerChoice}.`);
+      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
       return computerWinCount += 1;
     } else if (computerChoice === "paper") {
-      console.log(`Player won! ${playerChoice} beats ${computerChoice}.`);
+      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
       return playerWinCount += 1;
     } else if (computerChoice === "scissors") {
-      console.log("It's a tie.");
+      alert("It's a tie.");
       return tieCount += 1;
     }
   }
 
-  console.log("You didn't choose a valid option, so that will count as a loss!");
+  alert("You didn't choose a valid option, so that will count as a loss!");
   computerWinCount += 1;
 }
 
-playGame();
+for (let i = 0; i < 5; i++) {
+  if (i === 0) {
+    alert("This is your first game out of five! Good luck!");
+  } else if (i === 4) {
+    alert("This is your last game, choose carefully!");
+  }
+  
+  playGame();
+}
+
