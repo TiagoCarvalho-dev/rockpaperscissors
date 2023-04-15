@@ -15,8 +15,6 @@ function getComputerChoice() {
   }
 }
 
-getComputerChoice();
-
 let playerWinCount = 0;
 let computerWinCount = 0;
 let tieCount = 0;
@@ -28,44 +26,44 @@ function playGame() {
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
       alert("It's a tie.");
-      return tieCount += 1;
+      return tieCount++;
     } else if (computerChoice === "paper") {
       alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
-      return computerWinCount += 1;
+      return computerWinCount++;
     } else if (computerChoice === "scissors") {
       alert(`You won! ${playerChoice} beats ${computerChoice}.`);
-      return playerWinCount += 1;
+      return playerWinCount++;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
       alert(`You won! ${playerChoice} beats ${computerChoice}.`);
-      return playerWinCount += 1;
+      return playerWinCount++;
     } else if (computerChoice === "paper") {
       alert("It's a tie.");
-      return tieCount += 1;
+      return tieCount++;
     } else if (computerChoice === "scissors") {
       alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
-      return computerWinCount += 1;
+      return computerWinCount++;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
       alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
-      return computerWinCount += 1;
+      return computerWinCount++;
     } else if (computerChoice === "paper") {
       alert(`You won! ${playerChoice} beats ${computerChoice}.`);
-      return playerWinCount += 1;
+      return playerWinCount++;
     } else if (computerChoice === "scissors") {
       alert("It's a tie.");
-      return tieCount += 1;
+      return tieCount++;
     }
   }
 
-  alert("You didn't choose a valid option, so that will count as a loss!");
-  computerWinCount += 1;
+  alert("Invalid choice, so that will count as a loss.");
+  computerWinCount++;
 }
 
 for (let i = 0; i < 5; i++) {
@@ -74,7 +72,6 @@ for (let i = 0; i < 5; i++) {
   } else if (i === 4) {
     alert("This is your last game, choose carefully!");
   }
-  
+  getComputerChoice();
   playGame();
 }
-
