@@ -17,7 +17,7 @@ function getComputerChoice() {
 
 let playerWinCount = 0;
 let computerWinCount = 0;
-let tieCount = 0;
+let drawCount = 0;
 
 function playGame() {
   let playerChoice = prompt("Please select between Rock, Paper or Scissors:");
@@ -25,40 +25,40 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      alert("It's a tie.");
-      return tieCount++;
+      alert("It's a draw.");
+      return drawCount++;
     } else if (computerChoice === "paper") {
-      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
+      alert("You lost! Paper beats rock.");
       return computerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
+      alert("You won! Rock beats scissors.");
       return playerWinCount++;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
+      alert("You won! Paper beats rock.");
       return playerWinCount++;
     } else if (computerChoice === "paper") {
-      alert("It's a tie.");
-      return tieCount++;
+      alert("It's a draw.");
+      return drawCount++;
     } else if (computerChoice === "scissors") {
-      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
+      alert("You lost! Scissors beats paper.");
       return computerWinCount++;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
+      alert("You lost! Rock beats Scissors.");
       return computerWinCount++;
     } else if (computerChoice === "paper") {
-      alert(`You won! ${playerChoice} beats ${computerChoice}.`);
+      alert("You won! Scissors beats Paper.");
       return playerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert("It's a tie.");
-      return tieCount++;
+      alert("It's a draw.");
+      return drawCount++;
     }
   }
 
@@ -74,4 +74,18 @@ for (let i = 0; i < 5; i++) {
   }
   getComputerChoice();
   playGame();
+}
+
+showResults();
+
+function showResults() {
+  alert(`The match is over! Here's the results:\n${playerName}: ${playerWinCount} wins.\nComputer: ${computerWinCount} wins.\nDraws: ${drawCount}.`);
+  
+  if (playerWinCount > computerWinCount) {
+    alert("Congratulations! You WON!")
+  } else  if (playerWinCount < computerWinCount) {
+    alert("You LOSE! Better luck next time!")
+  } else {
+    alert("The game ended in a DRAW!")
+  }
 }
