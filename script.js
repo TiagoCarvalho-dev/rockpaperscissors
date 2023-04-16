@@ -1,7 +1,7 @@
 const playerName = prompt("Hello! Welcome to Rock Paper Scissors. What's your name?");
 
-alert(`Nice to meet you ${playerName}! The rules are very simple:`);
-alert("Rock beats scissors;\nPaper beats rock;\nScissors beats paper.\nHave fun!");
+alert(`Nice to meet you ${playerName}!\nThis will be a best out of five match.\nThe rules are very simple:`);
+alert("Rock beats scissors;\nPaper beats rock;\nScissors beats paper.\nFirst to three wins! Have fun!");
 
 let computerChoice;
 function getComputerChoice() {
@@ -25,52 +25,52 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      alert("It's a draw.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
       return drawCount++;
     } else if (computerChoice === "paper") {
-      alert("You lost! Paper beats rock.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
       return computerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert("You won! Rock beats scissors.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
       return playerWinCount++;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      alert("You won! Paper beats rock.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
       return playerWinCount++;
     } else if (computerChoice === "paper") {
-      alert("It's a draw.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
       return drawCount++;
     } else if (computerChoice === "scissors") {
-      alert("You lost! Scissors beats paper.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
       return computerWinCount++;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      alert("You lost! Rock beats Scissors.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
       return computerWinCount++;
     } else if (computerChoice === "paper") {
-      alert("You won! Scissors beats Paper.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
       return playerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert("It's a draw.");
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
       return drawCount++;
     }
   }
 
-  alert("Invalid choice, so that will count as a loss.");
-  computerWinCount++;
+  alert("Invalid choice. Please choose again.");
+  return;
 }
 
-for (let i = 0; i < 5; i++) {
-  if (i === 0) {
-    alert("This is your first game out of five! Good luck!");
-  } else if (i === 4) {
-    alert("This is your last game, choose carefully!");
+for (; playerWinCount < 3 || computerWinCount < 3;) {
+  if (playerWinCount === 0 && computerWinCount === 0 && drawCount === 0) {
+    alert("This is your first game in the best out of five! Good luck!");
+  } else if (playerWinCount === 2 || computerWinCount === 2) {
+    alert("This might be the last game, choose carefully!");
   }
   getComputerChoice();
   playGame();
