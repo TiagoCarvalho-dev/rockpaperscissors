@@ -25,39 +25,39 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nThis game was a draw!`);
       return drawCount++;
     } else if (computerChoice === "paper") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou LOST this game!`);
       return computerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou WON this game!`);
       return playerWinCount++;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou WON this game!`);
       return playerWinCount++;
     } else if (computerChoice === "paper") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nThis game was a draw!`);
       return drawCount++;
     } else if (computerChoice === "scissors") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou LOST this game!`);
       return computerWinCount++;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou LOST this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou LOST this game!`);
       return computerWinCount++;
     } else if (computerChoice === "paper") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nYou WON this game!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nYou WON this game!`);
       return playerWinCount++;
     } else if (computerChoice === "scissors") {
-      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\nThis game was a draw!`);
+      alert(`You chose ${playerChoice};\nComputer chose ${computerChoice};\n\nThis game was a draw!`);
       return drawCount++;
     }
   }
@@ -66,9 +66,11 @@ function playGame() {
   return;
 }
 
-for (; playerWinCount < 3 || computerWinCount < 3;) {
+for (; playerWinCount < 3 && computerWinCount < 3;) {
   if (playerWinCount === 0 && computerWinCount === 0 && drawCount === 0) {
     alert("This is your first game in the best out of five! Good luck!");
+  } else if (playerWinCount === 2 && computerWinCount === 2){
+    alert("This is the final game! Whoever wins is the champion!")
   } else if (playerWinCount === 2 || computerWinCount === 2) {
     alert("This might be the last game, choose carefully!");
   }
@@ -79,13 +81,11 @@ for (; playerWinCount < 3 || computerWinCount < 3;) {
 showResults();
 
 function showResults() {
-  alert(`The match is over! Here's the results:\n${playerName}: ${playerWinCount} wins.\nComputer: ${computerWinCount} wins.\nDraws: ${drawCount}.`);
+  alert(`The match is over! Here's the results:\n\n${playerName}: ${playerWinCount} wins.\nComputer: ${computerWinCount} wins.\nDraws: ${drawCount}.`);
   
   if (playerWinCount > computerWinCount) {
     alert("Congratulations! You WON!")
-  } else  if (playerWinCount < computerWinCount) {
-    alert("You LOSE! Better luck next time!")
   } else {
-    alert("The game ended in a DRAW!")
+    alert("You LOSE! Better luck next time!")
   }
 }
