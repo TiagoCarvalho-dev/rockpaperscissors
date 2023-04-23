@@ -1,11 +1,59 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">j
+    <meta charset="utf-8">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <link src="script.js" defer></link>
+    <style rel="stylesheet" href="style.css"></style>
   </head>
   <body>
-    
+    <div class="section1">
+      <h1 class="gameTitle">ROCK PAPER SCISSORS</h1>
+    </div>
+    <div class="section2">
+      <p><label for="getPlayerName">Welcome! First of all, tell us your name:</label></p>
+      <div class="playerInfo">
+        <input type="text" id="getPlayerName">
+        <button id="submitButton" type="button">Submit</button>
+      </div>
+    </div>
+    <div class="section3">
+      <div class="computerChoice">
+        <img src="" alt="A question mark">
+        <p>Computer Choice</p>
+      </div>
+    </div>
+    <div class="section4">
+      <h2 class="scoreTitle">SCORE</h2>
+      <div class="scoreCount">
+        <ul>
+          <li class="playerName"></li>
+          <li class="playerScore"></li>
+          <li class="versus">X</li>
+          <li class="computerScore"></li>
+          <li class="computerName">Computer</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section5">
+      <div class="playerChoice">
+      <h2 class="playerChoiceTitle">Make your choice</h2>
+        <div class="rock">
+          <img src="" alt="A rock">
+          <p>Rock</p>
+        </div>
+        <div class="paper">
+          <img src="" alt="A rock">
+          <p>Paper</p>
+        </div>
+        <div class="scissors">
+          <img src="" alt="A rock">
+          <p>Scissors</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Something here</p>
+    </div>
   </body>
 </html>
