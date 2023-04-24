@@ -1,0 +1,46 @@
+body {
+  background-color: gray;
+  font-family: 'Bruno Ace SC', cursive, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.section1 {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 15px 0;
+}
+
+h1 {
+  font-size: 45px;
+  text-align: center;
+}
+
+.section2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.section2 > p {
+  font-size: 25px;
+}
+
+.playerInfo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: 5px 10px;
+}
+
+#getPlayerName {
+  flex-basis: 400px;
+}
+
+#submitButton {
+  flex-basis: 200px;
+}
