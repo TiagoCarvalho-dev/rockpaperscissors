@@ -5,6 +5,7 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .section1 {
@@ -21,6 +22,7 @@ h1 {
 
 .section2 {
   margin: 0;
+  margin-bottom: 60px;
   padding: 0;
   text-align: center;
 }
@@ -43,4 +45,46 @@ h1 {
 
 #submitButton {
   flex-basis: 200px;
+}
+
+.section3 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.computerChoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.computerChoice > img {
+  border: solid blue 3px;
+}
+
+.computerChoice > p {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.section4 {
+  text-align: center;
+}
+
+.playerChoiceTitle {
+  margin: 50px 0;
+  font-size: 30px;
+}
+
+.playerChoice {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.rock > img,
+.paper > img,
+.scissors > img {
+  border: solid blue 3px;
 }
