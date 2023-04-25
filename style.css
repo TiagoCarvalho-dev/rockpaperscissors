@@ -83,9 +83,9 @@ h1 {
   gap: 30px;
 }
 
-.rock > img,
-.paper > img,
-.scissors > img {
+.rock > button,
+.paper > button,
+.scissors > button {
   border: solid blue 3px;
 }
 
@@ -114,6 +114,6 @@ ul > li {
   font-size: 30px;
 }
 
-/*.hidden {
+.hidden {
   display: none;
 }

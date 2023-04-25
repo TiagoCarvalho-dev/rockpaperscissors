@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissors</title>
-    <link src="script.js" defer></link>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css"></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,10 @@
       <h1 class="gameTitle">ROCK PAPER SCISSORS</h1>
     </div>
     <div class="section2">
-      <p><label for="getPlayerName">Welcome! First of all, tell us your name:</label></p>
+      <p id="welcomeMessage">Welcome! First of all, tell us your name:</p>
       <div class="playerInfo">
-        <input type="text" id="getPlayerName">
-        <button id="submitButton" type="button">Submit</button>
+        <input type="text" id="getPlayerName" placeholder="Enter Name Here">
+        <button type="button" id="submitButton">Submit</button>
       </div>
     </div>
     <div class="section3 hidden">
@@ -30,15 +30,15 @@
       <h2 class="playerChoiceTitle">Make your choice</h2>
       <div class="playerChoice">
         <div class="rock">
-          <img src="/images/questionMark.png" alt="A rock" width="130px" height="auto">
+          <button type="button" id="rockChoice"><img src="/images/questionMark.png" alt="A rock" width="130px" height="auto"></button>
           <p>Rock</p>
         </div>
         <div class="paper">
-          <img src="/images/questionMark.png" alt="A paper" width="130px" height="auto">
+          <button type="button" id="paperChoice"><img src="/images/questionMark.png" alt="A paper" width="130px" height="auto"></button>
           <p>Paper</p>
         </div>
         <div class="scissors">
-          <img src="/images/questionMark.png" alt="A scissors" width="130px" height="auto">
+          <button type="button" id="scissorsChoice"><img src="/images/questionMark.png" alt="A scissors" width="130px" height="auto"></button>
           <p>Scissors</p>
         </div>
       </div>
@@ -47,11 +47,11 @@
       <h2 class="scoreTitle">SCORE</h2>
       <div class="scoreCount">
         <ul>
-          <li class="playerName">You</li>
-          <li class="playerScore">0</li>
-          <li class="versus">X</li>
-          <li class="computerScore">0</li>
-          <li class="computerName">Computer</li>
+          <li id="playerName">You</li>
+          <li>0</li>
+          <li>X</li>
+          <li>0</li>
+          <li>Computer</li>
         </ul>
       </div>
     </div>

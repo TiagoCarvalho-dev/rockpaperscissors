@@ -1,7 +1,22 @@
-const playerName = prompt("Hello! Welcome to Rock Paper Scissors. What's your name?");
+const button = document.querySelector('#submitButton');
+const getPlayerName = document.querySelector('#getPlayerName');
+const playerName = document.querySelector('#playerName');
+const playerInfo = document.querySelector('.playerInfo');
+const section2 = document.querySelector('.section2');
+const welcomeMessage = document.querySelector('#welcomeMessage');
+const section3 = document.querySelector('.section3');
+const section4 = document.querySelector('.section4');
+const section5 = document.querySelector('.section5');
+const hidden = document.querySelector('.hidden');
 
-alert(`Nice to meet you ${playerName}!\nThis will be a best out of five match.\nThe rules are very simple:`);
-alert("Rock beats scissors;\nPaper beats rock;\nScissors beats paper.\nFirst to three wins! Have fun!");
+button.addEventListener('click', () => {
+  playerName.textContent = getPlayerName.value;
+  section2.removeChild(playerInfo);
+  welcomeMessage.textContent = "This will be a best out of five match. Whoever gets three wins first, wins. Have Fun!";
+  section3.classList.remove('hidden');
+  section4.classList.remove('hidden');
+  section5.classList.remove('hidden');
+});
 
 let computerChoice;
 function getComputerChoice() {
