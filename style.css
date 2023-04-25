@@ -40,7 +40,8 @@ h1 {
 }
 
 #getPlayerName {
-  flex-basis: 400px;
+  flex-basis: 200px;
+  font-size: 17px;
 }
 
 #submitButton {
