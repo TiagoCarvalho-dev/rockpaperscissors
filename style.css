@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 h1 {
@@ -87,4 +87,33 @@ h1 {
 .paper > img,
 .scissors > img {
   border: solid blue 3px;
+}
+
+.rock > p,
+.paper > p,
+.scissors > p {
+  font-size: 20px;
+}
+
+.section5 {
+  text-align: center;
+}
+
+.scoreTitle {
+  font-size: 30px;
+}
+
+.scoreCount > ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+ul > li {
+  font-size: 30px;
+}
+
+/*.hidden {
+  display: none;
 }
