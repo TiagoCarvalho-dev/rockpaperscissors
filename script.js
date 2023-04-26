@@ -22,15 +22,30 @@ const rockChoice = document.querySelector('#rockChoice');
 const paperChoice = document.querySelector('#paperChoice');
 const scissorsChoice = document.querySelector('#scissorsChoice');
 
+const playerChoiceTitle = document.querySelector('.playerChoiceTitle');
+const computerChoiceImg = document.querySelector('#computerChoiceImg');
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
+
 let playerChoice;
 
-rockChoice.addEventListener('click', () => playerChoice = 'rock');
-paperChoice.addEventListener('click', () => playerChoice = 'paper');
-scissorsChoice.addEventListener('click', () => playerChoice = 'scissors');
+rockChoice.addEventListener('click', () => {
+  playerChoice = 'rock';
+  playGame();
+});
 
-const computerChoiceImg = document.querySelector('#computerChoiceImg');
+paperChoice.addEventListener('click', () => {
+  playerChoice = 'paper';
+  playGame();
+});
+
+scissorsChoice.addEventListener('click', () => {
+  playerChoice = 'scissors';
+  playGame();
+});
 
 let computerChoice;
+
 function getComputerChoice() {
   let getComputerRandomValue = Math.floor(Math.random() * 3);
   if (getComputerRandomValue === 0) {
@@ -52,61 +67,121 @@ let playerWinCount = 0;
 let computerWinCount = 0;
 let drawCount = 0;
 
-const playerChoiceTitle = document.querySelector('.playerChoiceTitle');
-
 function playGame() {
+
+  getComputerChoice();
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
       playerChoiceTitle.textContent = 'This round was a DRAW';
-      return drawCount++;
+      drawCount++;
+      return drawCount;
     } else if (computerChoice === "paper") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
       playerChoiceTitle.textContent = 'You LOST this round';
-      return computerWinCount++;
+      computerWinCount++;
+      computerScore.textContent = computerWinCount;
+      return computerWinCount;
     } else if (computerChoice === "scissors") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
       playerChoiceTitle.textContent = 'You WON this round';
-      return playerWinCount++;
+      playerWinCount++;
+      playerScore.textContent = playerWinCount;
+      return playerWinCount;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
       playerChoiceTitle.textContent = 'You WON this round';
-      return playerWinCount++;
+      playerWinCount++;
+      playerScore.textContent = playerWinCount;
+      return playerWinCount;
     } else if (computerChoice === "paper") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
       playerChoiceTitle.textContent = 'This round was a DRAW';
-      return drawCount++;
+      drawCount++;
+      return drawCount;
     } else if (computerChoice === "scissors") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
       playerChoiceTitle.textContent = 'You LOST this round';
-      return computerWinCount++;
+      computerWinCount++;
+      computerScore.textContent = computerWinCount;
+      return computerWinCount;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
       playerChoiceTitle.textContent = 'You LOST this round';
-      return computerWinCount++;
+      computerWinCount++;
+      computerScore.textContent = computerWinCount;
+      return computerWinCount;
     } else if (computerChoice === "paper") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
       playerChoiceTitle.textContent = 'You WON this round';
-      return playerWinCount++;
+      playerWinCount++;
+      playerScore.textContent = playerWinCount;
+      return playerWinCount;
     } else if (computerChoice === "scissors") {
+      computerChoiceImg.removeAttribute('src');
+      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
       playerChoiceTitle.textContent = 'This round was a DRAW';
-      return drawCount++;
+      drawCount++;
+      return drawCount;
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 /*
 for (; playerWinCount < 3 && computerWinCount < 3;) {
+  playerChoiceTitle.textContent = 'Make your choice';
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/questionMark.jpg');
+
   if (playerWinCount === 0 && computerWinCount === 0 && drawCount === 0) {
-    alert("This is your first game in the best out of five! Good luck!");
+    playerChoiceTitle.textContent = 'This is your first game in the best out of five. Good Luck!';
   } else if (playerWinCount === 2 && computerWinCount === 2){
-    alert("This is the final game! Whoever wins is the champion!")
+    playerChoiceTitle.textContent = 'This is the final game. Whoever wins is the champion!';
   } else if (playerWinCount === 2 || computerWinCount === 2) {
-    alert("This might be the last game, choose carefully!");
+    playerChoiceTitle.textContent = 'This might be the last game, choose carefully!';
   }
+  
   getComputerChoice();
   playGame();
 }
+/*
+
+
+
+
+
+
+
+
+
+
 
 showResults();
 
