@@ -32,16 +32,19 @@ let playerChoice;
 rockChoice.addEventListener('click', () => {
   playerChoice = 'rock';
   playGame();
+  showResults();
 });
 
 paperChoice.addEventListener('click', () => {
   playerChoice = 'paper';
   playGame();
+  showResults();
 });
 
 scissorsChoice.addEventListener('click', () => {
   playerChoice = 'scissors';
   playGame();
+  showResults();
 });
 
 let computerChoice;
@@ -61,6 +64,16 @@ function getComputerChoice() {
     computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
     return computerChoice = "scissors";
   }
+}
+
+function showResults() {
+  
+  if (playerWinCount === 3) {
+    playerChoiceTitle.textContent = 'Congratulations, you WON!';
+  } else if (computerWinCount === 3) {
+    playerChoiceTitle.textContent = 'You LOST! Better luck next time!';
+  }
+  return
 }
 
 let playerWinCount = 0;
@@ -143,8 +156,6 @@ function playGame() {
     }
   }
 }
-
-
 
 
 
