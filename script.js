@@ -175,13 +175,6 @@ function playAgain() {
   playAgainButton.classList.toggle('hidden');
 }
 
-playAgainButton.addEventListener('click', () => {
-  playAgain();
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
-  resetResults();
-});
-
 function resetResults() {
   playerWinCount = 0;
   computerWinCount = 0;
@@ -189,3 +182,9 @@ function resetResults() {
   playerScore.textContent = 0;
   computerScore.textContent = 0;
 }
+
+playAgainButton.addEventListener('click', () => {
+  playAgain();
+  changeComputerPictureToQuestionMark();
+  resetResults();
+});
