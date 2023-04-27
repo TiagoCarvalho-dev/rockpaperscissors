@@ -49,6 +49,12 @@ scissorsChoice.addEventListener('click', () => {
   showResults();
 });
 
+playAgainButton.addEventListener('click', () => {
+  playAgain();
+  changeComputerPictureToQuestionMark();
+  resetResults();
+});
+
 let computerChoice;
 
 function getComputerChoice() {
@@ -77,18 +83,21 @@ function playGame() {
       changeComputerPictureToRock();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     }
   }
@@ -99,17 +108,20 @@ function playGame() {
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     }
   }
@@ -120,40 +132,23 @@ function playGame() {
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     }
   }
-}
-
-function changeComputerPictureToQuestionMark() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
-}
-
-function changeComputerPictureToRock() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/rock.jpg');
-}
-
-function changeComputerPictureToPaper() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/paper.jpg');
-}
-
-function changeComputerPictureToScissors() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
 }
 
 function showResults() {
@@ -183,8 +178,27 @@ function resetResults() {
   computerScore.textContent = 0;
 }
 
-playAgainButton.addEventListener('click', () => {
-  playAgain();
+function nextRound() {
+  playerChoiceTitle.textContent = 'Make your choice';
   changeComputerPictureToQuestionMark();
-  resetResults();
-});
+}
+
+function changeComputerPictureToQuestionMark() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
+}
+
+function changeComputerPictureToRock() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+}
+
+function changeComputerPictureToPaper() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+}
+
+function changeComputerPictureToScissors() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+}
