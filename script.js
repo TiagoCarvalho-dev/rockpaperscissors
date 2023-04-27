@@ -7,12 +7,15 @@ const welcomeMessage = document.querySelector('#welcomeMessage');
 const section3 = document.querySelector('.section3');
 const section4 = document.querySelector('.section4');
 const section5 = document.querySelector('.section5');
+const welcomeMessage2 = document.querySelector('.welcomeMessage2');
 const hidden = document.querySelector('.hidden');
 
 submitButton.addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
-  welcomeMessage.textContent = "This will be a best out of five match. Whoever gets three wins first, wins. Have Fun!";
+  welcomeMessage.textContent = "This will be a best out of five match.";
+  welcomeMessage2.textContent = "Have Fun!";
+  welcomeMessage2.classList.toggle('hidden');
   section3.classList.toggle('hidden');
   section4.classList.toggle('hidden');
   section5.classList.toggle('hidden');
@@ -28,6 +31,7 @@ const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
 const playerChoiceContainer = document.querySelector('.playerChoiceContainer');
 const playAgainButton = document.querySelector('#playAgainButton');
+const finalScore = document.querySelector('.finalScore');
 
 let playerChoice;
 
@@ -53,6 +57,7 @@ playAgainButton.addEventListener('click', () => {
   playAgain();
   changeComputerPictureToQuestionMark();
   resetResults();
+  finalScore.classList.toggle('hidden');
 });
 
 let computerChoice;
@@ -83,18 +88,21 @@ function playGame() {
       changeComputerPictureToRock();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     }
   }
@@ -105,17 +113,20 @@ function playGame() {
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     }
   }
@@ -126,17 +137,20 @@ function playGame() {
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
+      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
+      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
+      setTimeout(nextRound, 2000);
       return drawCount;
     }
   }
@@ -144,11 +158,19 @@ function playGame() {
 
 function showResults() {
   if (playerWinCount === 3) {
-    roundSituation.textContent = 'Congratulations, you WON!';
-    playAgain();
+    setTimeout( () => {
+      roundSituation.textContent = 'Congratulations, you WON!';
+      finalScore.textContent = `${getPlayerName.value} ${playerScore.value} X ${computerScore.value} Computer`;
+      finalScore.classList.toggle('hidden');
+      playAgain();
+    }, 2000);
   } else if (computerWinCount === 3) {
-    roundSituation.textContent = 'You LOST! Better luck next time!';
-    playAgain();
+    setTimeout( () => {
+      roundSituation.textContent = 'You LOST! Better luck next time!';
+      finalScore.textContent = `${getPlayerName.value} ${playerScore.value} X ${computerScore.value} Computer`;
+      finalScore.classList.toggle('hidden');
+      playAgain();
+    }, 2000);
   }
   return
 }
