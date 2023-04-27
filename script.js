@@ -1,4 +1,4 @@
-const button = document.querySelector('#submitButton');
+const submitButton = document.querySelector('#submitButton');
 const getPlayerName = document.querySelector('#getPlayerName');
 const playerName = document.querySelector('#playerName');
 const playerInfo = document.querySelector('.playerInfo');
@@ -9,7 +9,7 @@ const section4 = document.querySelector('.section4');
 const section5 = document.querySelector('.section5');
 const hidden = document.querySelector('.hidden');
 
-button.addEventListener('click', () => {
+submitButton.addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
   welcomeMessage.textContent = "This will be a best out of five match. Whoever gets three wins first, wins. Have Fun!";
@@ -54,16 +54,13 @@ let computerChoice;
 function getComputerChoice() {
   let getComputerRandomValue = Math.floor(Math.random() * 3);
   if (getComputerRandomValue === 0) {
-    computerChoiceImg.removeAttribute('src');
-    computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+    changeComputerPictureToRock();
     return computerChoice = "rock";
   } else if (getComputerRandomValue === 1) {
-    computerChoiceImg.removeAttribute('src');
-    computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+    changeComputerPictureToPaper();
     return computerChoice = "paper";
   } else {
-    computerChoiceImg.removeAttribute('src');
-    computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+    changeComputerPictureToScissors();
     return computerChoice = "scissors";
   }
 }
@@ -77,21 +74,18 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+      changeComputerPictureToRock();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
       return drawCount;
     } else if (computerChoice === "paper") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+      changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
       return computerWinCount;
     } else if (computerChoice === "scissors") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+      changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
@@ -101,21 +95,18 @@ function playGame() {
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+      changeComputerPictureToRock();
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
       return playerWinCount;
     } else if (computerChoice === "paper") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+      changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
       return drawCount;
     } else if (computerChoice === "scissors") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+      changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
@@ -125,27 +116,44 @@ function playGame() {
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+      changeComputerPictureToRock();
       playerChoiceTitle.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
       return computerWinCount;
     } else if (computerChoice === "paper") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+      changeComputerPictureToPaper();
       playerChoiceTitle.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
       return playerWinCount;
     } else if (computerChoice === "scissors") {
-      computerChoiceImg.removeAttribute('src');
-      computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+      changeComputerPictureToScissors();
       playerChoiceTitle.textContent = 'This round was a DRAW';
       drawCount++;
       return drawCount;
     }
   }
+}
+
+function changeComputerPictureToQuestionMark() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
+}
+
+function changeComputerPictureToRock() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/rock.jpg');
+}
+
+function changeComputerPictureToPaper() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/paper.jpg');
+}
+
+function changeComputerPictureToScissors() {
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
 }
 
 function showResults() {
@@ -159,13 +167,6 @@ function showResults() {
   return
 }
 
-playAgainButton.addEventListener('click', () => {
-  playAgain();
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
-  resetResults();
-});
-
 function playAgain() {
   section2.classList.toggle('hidden');
   section3.classList.toggle('hidden');
@@ -174,7 +175,14 @@ function playAgain() {
   playAgainButton.classList.toggle('hidden');
 }
 
-function resetResults () {
+playAgainButton.addEventListener('click', () => {
+  playAgain();
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
+  resetResults();
+});
+
+function resetResults() {
   playerWinCount = 0;
   computerWinCount = 0;
   drawCount = 0;
