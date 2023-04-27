@@ -22,7 +22,7 @@ const rockChoice = document.querySelector('#rockChoice');
 const paperChoice = document.querySelector('#paperChoice');
 const scissorsChoice = document.querySelector('#scissorsChoice');
 
-const playerChoiceTitle = document.querySelector('.playerChoiceTitle');
+const roundSituation = document.querySelector('.roundSituation');
 const computerChoiceImg = document.querySelector('#computerChoiceImg');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
@@ -81,23 +81,20 @@ function playGame() {
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
       changeComputerPictureToRock();
-      playerChoiceTitle.textContent = 'This round was a DRAW';
+      roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
-      playerChoiceTitle.textContent = 'You LOST this round';
+      roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
-      playerChoiceTitle.textContent = 'You WON this round';
+      roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
       return playerWinCount;
     }
   }
@@ -105,23 +102,20 @@ function playGame() {
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
       changeComputerPictureToRock();
-      playerChoiceTitle.textContent = 'You WON this round';
+      roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
-      playerChoiceTitle.textContent = 'This round was a DRAW';
+      roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
-      playerChoiceTitle.textContent = 'You LOST this round';
+      roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
       return computerWinCount;
     }
   }
@@ -129,23 +123,20 @@ function playGame() {
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
       changeComputerPictureToRock();
-      playerChoiceTitle.textContent = 'You LOST this round';
+      roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
-      playerChoiceTitle.textContent = 'You WON this round';
+      roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
-      playerChoiceTitle.textContent = 'This round was a DRAW';
+      roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
       return drawCount;
     }
   }
@@ -153,10 +144,10 @@ function playGame() {
 
 function showResults() {
   if (playerWinCount === 3) {
-    playerChoiceTitle.textContent = 'Congratulations, you WON!';
+    roundSituation.textContent = 'Congratulations, you WON!';
     playAgain();
   } else if (computerWinCount === 3) {
-    playerChoiceTitle.textContent = 'You LOST! Better luck next time!';
+    roundSituation.textContent = 'You LOST! Better luck next time!';
     playAgain();
   }
   return
@@ -179,7 +170,7 @@ function resetResults() {
 }
 
 function nextRound() {
-  playerChoiceTitle.textContent = 'Make your choice';
+  roundSituation.textContent = 'Make your choice';
   changeComputerPictureToQuestionMark();
 }
 
