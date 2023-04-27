@@ -13,9 +13,9 @@ button.addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
   welcomeMessage.textContent = "This will be a best out of five match. Whoever gets three wins first, wins. Have Fun!";
-  section3.classList.remove('hidden');
-  section4.classList.remove('hidden');
-  section5.classList.remove('hidden');
+  section3.classList.toggle('hidden');
+  section4.classList.toggle('hidden');
+  section5.classList.toggle('hidden');
 });
 
 const rockChoice = document.querySelector('#rockChoice');
@@ -26,6 +26,8 @@ const playerChoiceTitle = document.querySelector('.playerChoiceTitle');
 const computerChoiceImg = document.querySelector('#computerChoiceImg');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
+const playerChoiceContainer = document.querySelector('.playerChoiceContainer');
+const playAgainButton = document.querySelector('#playAgainButton');
 
 let playerChoice;
 
@@ -66,22 +68,11 @@ function getComputerChoice() {
   }
 }
 
-function showResults() {
-  
-  if (playerWinCount === 3) {
-    playerChoiceTitle.textContent = 'Congratulations, you WON!';
-  } else if (computerWinCount === 3) {
-    playerChoiceTitle.textContent = 'You LOST! Better luck next time!';
-  }
-  return
-}
-
 let playerWinCount = 0;
 let computerWinCount = 0;
 let drawCount = 0;
 
 function playGame() {
-
   getComputerChoice();
 
   if (playerChoice === "rock") {
@@ -157,53 +148,36 @@ function playGame() {
   }
 }
 
-
-
-
-
-
-
-
-
-/*
-for (; playerWinCount < 3 && computerWinCount < 3;) {
-  playerChoiceTitle.textContent = 'Make your choice';
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/questionMark.jpg');
-
-  if (playerWinCount === 0 && computerWinCount === 0 && drawCount === 0) {
-    playerChoiceTitle.textContent = 'This is your first game in the best out of five. Good Luck!';
-  } else if (playerWinCount === 2 && computerWinCount === 2){
-    playerChoiceTitle.textContent = 'This is the final game. Whoever wins is the champion!';
-  } else if (playerWinCount === 2 || computerWinCount === 2) {
-    playerChoiceTitle.textContent = 'This might be the last game, choose carefully!';
-  }
-  
-  getComputerChoice();
-  playGame();
-}
-/*
-
-
-
-
-
-
-
-
-
-
-
-showResults();
-
 function showResults() {
-  alert(`The match is over! Here's the results:\n\n${playerName}: ${playerWinCount} wins.\nComputer: ${computerWinCount} wins.\nDraws: ${drawCount}.`);
-  
-  if (playerWinCount > computerWinCount) {
-    alert("Congratulations! You WON!")
-  } else {
-    alert("You LOSE! Better luck next time!")
+  if (playerWinCount === 3) {
+    playerChoiceTitle.textContent = 'Congratulations, you WON!';
+    playAgain();
+  } else if (computerWinCount === 3) {
+    playerChoiceTitle.textContent = 'You LOST! Better luck next time!';
+    playAgain();
   }
+  return
 }
 
-*/
+playAgainButton.addEventListener('click', () => {
+  playAgain();
+  computerChoiceImg.removeAttribute('src');
+  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
+  resetResults();
+});
+
+function playAgain() {
+  section2.classList.toggle('hidden');
+  section3.classList.toggle('hidden');
+  playerChoiceContainer.classList.toggle('hidden');
+  section5.classList.toggle('hidden');
+  playAgainButton.classList.toggle('hidden');
+}
+
+function resetResults () {
+  playerWinCount = 0;
+  computerWinCount = 0;
+  drawCount = 0;
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
+}

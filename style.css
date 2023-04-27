@@ -78,7 +78,7 @@ h1 {
   font-size: 30px;
 }
 
-.playerChoice {
+.playerChoiceContainer {
   display: flex;
   justify-content: center;
   gap: 30px;
