@@ -8,18 +8,6 @@ const section3 = document.querySelector('.section3');
 const section4 = document.querySelector('.section4');
 const section5 = document.querySelector('.section5');
 const welcomeMessage2 = document.querySelector('.welcomeMessage2');
-const hidden = document.querySelector('.hidden');
-
-submitButton.addEventListener('click', () => {
-  playerName.textContent = getPlayerName.value;
-  section2.removeChild(playerInfo);
-  welcomeMessage.textContent = "This will be a best out of five match.";
-  welcomeMessage2.textContent = "Have Fun!";
-  welcomeMessage2.classList.toggle('hidden');
-  section3.classList.toggle('hidden');
-  section4.classList.toggle('hidden');
-  section5.classList.toggle('hidden');
-});
 
 const rockChoice = document.querySelector('#rockChoice');
 const paperChoice = document.querySelector('#paperChoice');
@@ -33,22 +21,36 @@ const playerChoiceContainer = document.querySelector('.playerChoiceContainer');
 const playAgainButton = document.querySelector('#playAgainButton');
 const finalScore = document.querySelector('.finalScore');
 
+submitButton.addEventListener('click', () => {
+  playerName.textContent = getPlayerName.value;
+  section2.removeChild(playerInfo);
+  welcomeMessage.textContent = "This will be a best out of five match.";
+  welcomeMessage2.textContent = "Have Fun!";
+  welcomeMessage2.classList.toggle('hidden');
+  section3.classList.toggle('hidden');
+  section4.classList.toggle('hidden');
+  section5.classList.toggle('hidden');
+});
+
 let playerChoice;
 
 rockChoice.addEventListener('click', () => {
   playerChoice = 'rock';
+  disableChoiceButtons();
   playGame();
   showResults();
 });
 
 paperChoice.addEventListener('click', () => {
   playerChoice = 'paper';
+  disableChoiceButtons();
   playGame();
   showResults();
 });
 
 scissorsChoice.addEventListener('click', () => {
   playerChoice = 'scissors';
+  disableChoiceButtons();
   playGame();
   showResults();
 });
@@ -172,6 +174,7 @@ function showResults() {
       finalScore.classList.toggle('hidden');
     }, 1500);
   }
+  setTimeout(enableChoiceButtons, 1500);
   return
 }
 
@@ -214,4 +217,16 @@ function changeComputerPictureToPaper() {
 function changeComputerPictureToScissors() {
   computerChoiceImg.removeAttribute('src');
   computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+}
+
+function enableChoiceButtons() {
+  document.getElementById('rockChoice').disabled = false;
+  document.getElementById('paperChoice').disabled = false;
+  document.getElementById('scissorsChoice').disabled = false;
+}
+
+function disableChoiceButtons() {
+  document.getElementById('rockChoice').disabled = true;
+  document.getElementById('paperChoice').disabled = true;
+  document.getElementById('scissorsChoice').disabled = true;
 }
