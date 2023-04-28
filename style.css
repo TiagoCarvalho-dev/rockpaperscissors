@@ -1,9 +1,9 @@
 body {
-  background-color: gray;
+  background-color: #9BA4B5;
   font-family: 'Bruno Ace SC', cursive, sans-serif;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 15px;
   padding: 0;
   box-sizing: border-box;
 }
@@ -16,19 +16,28 @@ body {
 }
 
 h1 {
-  font-size: 45px;
+  font-size: 48px;
   text-align: center;
+  color: #212A3E;
 }
 
 .section2 {
-  margin: 0;
   margin-bottom: 60px;
-  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  padding: 50px;
   text-align: center;
+  border: solid 4px #212a3ebb;
+  background-color: #0c426154;
+  border-radius: 15px;
 }
 
 .section2 > p {
   font-size: 25px;
+  padding-bottom: 30px;
+  margin: 0;
+  color: black;
 }
 
 .playerInfo {
@@ -36,16 +45,32 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   padding: 0;
-  gap: 5px 10px;
+  gap: 10px 10px;
 }
 
 #getPlayerName {
-  flex-basis: 200px;
+  flex-basis: 250px;
   font-size: 17px;
+  border-radius: 10px;
+  border: solid 2px #212a3ebb;
+  background-color: #9BA4B5;
+  padding: 0 20px 0 20px;
 }
 
 #submitButton {
-  flex-basis: 200px;
+  flex-basis: 150px;
+  height: 30px;
+  border: solid 2px #212a3ebb;
+  background-color: #9BA4B5;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+}
+
+#submitButton:hover {
+  background-color: #212a3ebb;
+  color: #9BA4B5;
 }
 
 .section3 {
@@ -82,6 +107,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 30px;
+  flex-wrap: wrap;
 }
 
 .rock > button,
