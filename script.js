@@ -88,21 +88,21 @@ function playGame() {
       changeComputerPictureToRock();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return drawCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return computerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return playerWinCount;
     }
   }
@@ -113,20 +113,20 @@ function playGame() {
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return playerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return drawCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return computerWinCount;
     }
   }
@@ -137,20 +137,20 @@ function playGame() {
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return computerWinCount;
     } else if (computerChoice === "paper") {
       changeComputerPictureToPaper();
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return playerWinCount;
     } else if (computerChoice === "scissors") {
       changeComputerPictureToScissors();
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
-      setTimeout(nextRound, 2000);
+      setTimeout(nextRound, 1500);
       return drawCount;
     }
   }
@@ -159,18 +159,18 @@ function playGame() {
 function showResults() {
   if (playerWinCount === 3) {
     setTimeout( () => {
-      roundSituation.textContent = 'Congratulations, you WON!';
-      finalScore.textContent = `${getPlayerName.value} ${playerScore.value} X ${computerScore.value} Computer`;
-      finalScore.classList.toggle('hidden');
       playAgain();
-    }, 2000);
+      roundSituation.textContent = 'Congratulations, you WON!';
+      finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
+      finalScore.classList.toggle('hidden');
+    }, 1500);
   } else if (computerWinCount === 3) {
     setTimeout( () => {
-      roundSituation.textContent = 'You LOST! Better luck next time!';
-      finalScore.textContent = `${getPlayerName.value} ${playerScore.value} X ${computerScore.value} Computer`;
-      finalScore.classList.toggle('hidden');
       playAgain();
-    }, 2000);
+      roundSituation.textContent = 'You LOST! Better luck next time!';
+      finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
+      finalScore.classList.toggle('hidden');
+    }, 1500);
   }
   return
 }
