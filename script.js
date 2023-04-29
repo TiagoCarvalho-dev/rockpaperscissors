@@ -34,30 +34,29 @@ let playerChoice;
 
 rockChoice.addEventListener('click', () => {
   playerChoice = 'rock';
-  disableChoiceButtons();
+  toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
 });
 
 paperChoice.addEventListener('click', () => {
   playerChoice = 'paper';
-  disableChoiceButtons();
+  toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
 });
 
 scissorsChoice.addEventListener('click', () => {
   playerChoice = 'scissors';
-  disableChoiceButtons();
+  toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
 });
 
 playAgainButton.addEventListener('click', () => {
-  playAgain();
+  toggleFinalResultsElements();
   changeComputerPictureToQuestionMark();
   resetResults();
-  finalResults.classList.toggle('hidden');
 });
 
 let computerChoice;
@@ -159,27 +158,26 @@ function playGame() {
 function showGameResults() {
   if (playerWinCount === 3) {
     setTimeout( () => {
-      playAgain();
+      toggleFinalResultsElements();
       matchResult.textContent = 'Congratulations, you WON!';
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
-      finalResults.classList.toggle('hidden');
     }, 2000);
   } else if (computerWinCount === 3) {
     setTimeout( () => {
-      playAgain();
+      toggleFinalResultsElements();
       matchResult.textContent = 'You LOST! Better luck next time!';
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
-      finalResults.classList.toggle('hidden');
     }, 2000);
   }
-  setTimeout(enableChoiceButtons, 2000);
+  setTimeout( () => toggleChoiceButtons('enabled'), 2000);
   return
 }
 
-function playAgain() {
+function toggleFinalResultsElements() {
   gamePlayArea.classList.toggle('hidden');
-  playAgainButton.classList.toggle('hidden');
   welcomeContainer.classList.toggle('hidden');
+  playAgainButton.classList.toggle('hidden');
+  finalResults.classList.toggle('hidden');
 }
 
 function resetResults() {
@@ -215,14 +213,14 @@ function changeComputerPictureToScissors() {
   computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
 }
 
-function enableChoiceButtons() {
-  document.getElementById('rockChoice').disabled = false;
-  document.getElementById('paperChoice').disabled = false;
-  document.getElementById('scissorsChoice').disabled = false;
-}
-
-function disableChoiceButtons() {
-  document.getElementById('rockChoice').disabled = true;
-  document.getElementById('paperChoice').disabled = true;
-  document.getElementById('scissorsChoice').disabled = true;
+function toggleChoiceButtons(option) {
+  if (option === 'enabled') {
+    document.getElementById('rockChoice').disabled = false;
+    document.getElementById('paperChoice').disabled = false;
+    document.getElementById('scissorsChoice').disabled = false;
+  } else if (option === 'disabled') {
+    document.getElementById('rockChoice').disabled = true;
+    document.getElementById('paperChoice').disabled = true;
+    document.getElementById('scissorsChoice').disabled = true;
+  }
 }
