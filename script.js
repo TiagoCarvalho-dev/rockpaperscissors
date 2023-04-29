@@ -4,10 +4,9 @@ const playerName = document.querySelector('#playerName');
 const playerInfo = document.querySelector('.playerInfo');
 const section2 = document.querySelector('.section2');
 const welcomeMessage = document.querySelector('#welcomeMessage');
-const section3 = document.querySelector('.section3');
-const section4 = document.querySelector('.section4');
-const section5 = document.querySelector('.section5');
 const welcomeMessage2 = document.querySelector('.welcomeMessage2');
+const gamePlayArea = document.querySelector('.gamePlayArea');
+const matchResult = document.querySelector('.matchResult');
 
 const rockChoice = document.querySelector('#rockChoice');
 const paperChoice = document.querySelector('#paperChoice');
@@ -20,16 +19,15 @@ const computerScore = document.querySelector('#computerScore');
 const playerChoiceContainer = document.querySelector('.playerChoiceContainer');
 const playAgainButton = document.querySelector('#playAgainButton');
 const finalScore = document.querySelector('.finalScore');
+const finalResults = document.querySelector('.finalResults');
+const welcomeContainer = document.querySelector('.welcomeContainer');
 
 submitButton.addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
   welcomeMessage.textContent = "This will be a best out of five match.";
   welcomeMessage2.textContent = "Have Fun!";
-  welcomeMessage2.classList.toggle('hidden');
-  section3.classList.toggle('hidden');
-  section4.classList.toggle('hidden');
-  section5.classList.toggle('hidden');
+  gamePlayArea.classList.toggle('hidden');
 });
 
 let playerChoice;
@@ -38,28 +36,28 @@ rockChoice.addEventListener('click', () => {
   playerChoice = 'rock';
   disableChoiceButtons();
   playGame();
-  showResults();
+  showGameResults();
 });
 
 paperChoice.addEventListener('click', () => {
   playerChoice = 'paper';
   disableChoiceButtons();
   playGame();
-  showResults();
+  showGameResults();
 });
 
 scissorsChoice.addEventListener('click', () => {
   playerChoice = 'scissors';
   disableChoiceButtons();
   playGame();
-  showResults();
+  showGameResults();
 });
 
 playAgainButton.addEventListener('click', () => {
   playAgain();
   changeComputerPictureToQuestionMark();
   resetResults();
-  finalScore.classList.toggle('hidden');
+  finalResults.classList.toggle('hidden');
 });
 
 let computerChoice;
@@ -158,20 +156,20 @@ function playGame() {
   }
 }
 
-function showResults() {
+function showGameResults() {
   if (playerWinCount === 3) {
     setTimeout( () => {
       playAgain();
-      roundSituation.textContent = 'Congratulations, you WON!';
+      matchResult.textContent = 'Congratulations, you WON!';
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
-      finalScore.classList.toggle('hidden');
+      finalResults.classList.toggle('hidden');
     }, 2000);
   } else if (computerWinCount === 3) {
     setTimeout( () => {
       playAgain();
-      roundSituation.textContent = 'You LOST! Better luck next time!';
+      matchResult.textContent = 'You LOST! Better luck next time!';
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
-      finalScore.classList.toggle('hidden');
+      finalResults.classList.toggle('hidden');
     }, 2000);
   }
   setTimeout(enableChoiceButtons, 2000);
@@ -179,11 +177,9 @@ function showResults() {
 }
 
 function playAgain() {
-  section2.classList.toggle('hidden');
-  section3.classList.toggle('hidden');
-  playerChoiceContainer.classList.toggle('hidden');
-  section5.classList.toggle('hidden');
+  gamePlayArea.classList.toggle('hidden');
   playAgainButton.classList.toggle('hidden');
+  welcomeContainer.classList.toggle('hidden');
 }
 
 function resetResults() {

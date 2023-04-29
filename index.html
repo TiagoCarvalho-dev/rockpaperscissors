@@ -14,48 +14,55 @@
       <h1 class="gameTitle">ROCK PAPER SCISSORS</h1>
     </div>
     <div class="section2">
-      <p id="welcomeMessage">Welcome! First of all, tell us your name:</p>
-      <p class="welcomeMessage2 hidden"></p>
+      <div class="welcomeContainer">
+        <p id="welcomeMessage">Welcome! First of all, tell us your name:</p>
+        <p class="welcomeMessage2"></p>
+      </div>
       <div class="playerInfo">
         <input type="text" id="getPlayerName" placeholder="Enter Name Here">
         <button type="button" id="submitButton">SUBMIT</button>
       </div>
+      <div class="finalResults hidden">
+        <p class="matchResult"></p>
+        <p class="finalScore"></p>
+        <button type="button" id="playAgainButton" class="hidden">Play Again</button>
+      </div>  
     </div>
-    <div class="section3 hidden">
-      <div class="computerChoice">
-        <p>Computer Choice</p>
-        <img id="computerChoiceImg" src="/images/questionMark.png" alt="A question mark" width="130px" height="130px">
-      </div>
-    </div>
-    <div class="section4 hidden">
-      <h2 class="roundSituation">Make your choice</h2>
-      <p class="finalScore hidden"></p>
-      <button type="button" id="playAgainButton" class="hidden">Play Again</button>
-      <div class="playerChoiceContainer">
-        <div class="rock">
-          <button type="button" id="rockChoice"><img src="/images/rock.jpg" alt="A rock" width="130px" height="130px"></button>
-          <p>Rock</p>
-        </div>
-        <div class="paper">
-          <button type="button" id="paperChoice"><img src="/images/paper.jpg" alt="A paper" width="130px" height="130px"></button>
-          <p>Paper</p>
-        </div>
-        <div class="scissors">
-          <button type="button" id="scissorsChoice"><img src="/images/scissors.jpg" alt="A scissors" width="130px" height="130px"></button>
-          <p>Scissors</p>
+    <div class="gamePlayArea hidden">
+      <div class="section3">
+        <div class="computerChoice">
+          <p>Computer Choice</p>
+          <img id="computerChoiceImg" src="/images/questionMark.png" alt="A question mark" width="130px" height="130px">
         </div>
       </div>
-    </div>
-    <div class="section5 hidden">
-      <h2 class="scoreTitle">SCORE</h2>
-      <div class="scoreCount">
-        <ul>
-          <li id="playerName">You</li>
-          <li id="playerScore">0</li>
-          <li>X</li>
-          <li id="computerScore">0</li>
-          <li>Computer</li>
-        </ul>
+      <div class="section4">
+        <h2 class="roundSituation">Make your choice</h2>
+        <div class="playerChoiceContainer">
+          <div class="rock">
+            <button type="button" id="rockChoice"><img src="/images/rock.jpg" alt="A rock" width="130px" height="130px"></button>
+            <p>Rock</p>
+          </div>
+          <div class="paper">
+            <button type="button" id="paperChoice"><img src="/images/paper.jpg" alt="A paper" width="130px" height="130px"></button>
+            <p>Paper</p>
+          </div>
+          <div class="scissors">
+            <button type="button" id="scissorsChoice"><img src="/images/scissors.jpg" alt="A scissors" width="130px" height="130px"></button>
+            <p>Scissors</p>
+          </div>
+        </div>
+      </div>
+      <div class="section5">
+        <h2 class="scoreTitle">SCORE</h2>
+        <div class="scoreCount">
+          <ul>
+            <li id="playerName">You</li>
+            <li id="playerScore">0</li>
+            <li>X</li>
+            <li id="computerScore">0</li>
+            <li>Computer</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="footer">
