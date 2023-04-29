@@ -139,7 +139,7 @@ function nextRound() {
 
 function changeComputerPicture(pictureToChange) {
   computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/' + pictureToChange + '.png');
+  computerChoiceImg.setAttribute('src', './images/' + pictureToChange + '.png');
 }
 
 function toggleChoiceButtons(option) {
