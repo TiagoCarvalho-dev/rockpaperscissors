@@ -2,19 +2,19 @@ const getPlayerName = document.querySelector('#getPlayerName');
 const playerName = document.querySelector('#playerName');
 const playerInfo = document.querySelector('.playerInfo');
 const section2 = document.querySelector('.section2');
+const welcomeContainer = document.querySelector('.welcomeContainer');
 const welcomeMessage = document.querySelector('#welcomeMessage');
 const welcomeMessage2 = document.querySelector('.welcomeMessage2');
 const gamePlayArea = document.querySelector('.gamePlayArea');
-const matchResult = document.querySelector('.matchResult');
-
 const roundSituation = document.querySelector('.roundSituation');
-const computerChoiceImg = document.querySelector('#computerChoiceImg');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
-const playAgainButton = document.querySelector('#playAgainButton');
-const finalScore = document.querySelector('.finalScore');
 const finalResults = document.querySelector('.finalResults');
-const welcomeContainer = document.querySelector('.welcomeContainer');
+const matchResult = document.querySelector('.matchResult');
+const finalScore = document.querySelector('.finalScore');
+const playAgainButton = document.querySelector('#playAgainButton');
+const computerChoiceImg = document.querySelector('#computerChoiceImg');
+
 
 document.querySelector('#submitButton').addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
@@ -111,9 +111,10 @@ function showGameResults() {
       matchResult.textContent = 'You LOST! Better luck next time!';
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
     }, 2000);
-  }
+  } else {
   setTimeout( () => toggleChoiceButtons('enabled'), 2000);
   return
+  }
 }
 
 function toggleFinalResultsElements() {
