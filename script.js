@@ -8,15 +8,14 @@ const welcomeMessage2 = document.querySelector('.welcomeMessage2');
 const gamePlayArea = document.querySelector('.gamePlayArea');
 const matchResult = document.querySelector('.matchResult');
 
-const rockChoice = document.querySelector('#rockChoice');
-const paperChoice = document.querySelector('#paperChoice');
-const scissorsChoice = document.querySelector('#scissorsChoice');
+const rockChoiceButton = document.querySelector('#rockChoiceButton');
+const paperChoiceButton = document.querySelector('#paperChoiceButton');
+const scissorsChoiceButton = document.querySelector('#scissorsChoiceButton');
 
 const roundSituation = document.querySelector('.roundSituation');
 const computerChoiceImg = document.querySelector('#computerChoiceImg');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
-const playerChoiceContainer = document.querySelector('.playerChoiceContainer');
 const playAgainButton = document.querySelector('#playAgainButton');
 const finalScore = document.querySelector('.finalScore');
 const finalResults = document.querySelector('.finalResults');
@@ -32,21 +31,21 @@ submitButton.addEventListener('click', () => {
 
 let playerChoice;
 
-rockChoice.addEventListener('click', () => {
+rockChoiceButton.addEventListener('click', () => {
   playerChoice = 'rock';
   toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
 });
 
-paperChoice.addEventListener('click', () => {
+paperChoiceButton.addEventListener('click', () => {
   playerChoice = 'paper';
   toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
 });
 
-scissorsChoice.addEventListener('click', () => {
+scissorsChoiceButton.addEventListener('click', () => {
   playerChoice = 'scissors';
   toggleChoiceButtons('disabled');
   playGame();
@@ -55,7 +54,7 @@ scissorsChoice.addEventListener('click', () => {
 
 playAgainButton.addEventListener('click', () => {
   toggleFinalResultsElements();
-  changeComputerPictureToQuestionMark();
+  changeComputerPicture('questionMark');
   resetResults();
 });
 
@@ -64,13 +63,13 @@ let computerChoice;
 function getComputerChoice() {
   let getComputerRandomValue = Math.floor(Math.random() * 3);
   if (getComputerRandomValue === 0) {
-    changeComputerPictureToRock();
+    changeComputerPicture('rock');
     return computerChoice = "rock";
   } else if (getComputerRandomValue === 1) {
-    changeComputerPictureToPaper();
+    changeComputerPicture('paper');
     return computerChoice = "paper";
   } else {
-    changeComputerPictureToScissors();
+    changeComputerPicture('scissors');
     return computerChoice = "scissors";
   }
 }
@@ -84,20 +83,20 @@ function playGame() {
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
-      changeComputerPictureToRock();
+      changeComputerPicture('rock');
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
       setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "paper") {
-      changeComputerPictureToPaper();
+      changeComputerPicture('paper');
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
       setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "scissors") {
-      changeComputerPictureToScissors();
+      changeComputerPicture('scissors');
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
@@ -108,20 +107,20 @@ function playGame() {
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      changeComputerPictureToRock();
+      changeComputerPicture('rock');
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
       setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "paper") {
-      changeComputerPictureToPaper();
+      changeComputerPicture('paper');
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
       setTimeout(nextRound, 2000);
       return drawCount;
     } else if (computerChoice === "scissors") {
-      changeComputerPictureToScissors();
+      changeComputerPicture('scissors');
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
@@ -132,21 +131,21 @@ function playGame() {
 
   if (playerChoice === "scissors") {
     if (computerChoice === "rock") {
-      changeComputerPictureToRock();
+      changeComputerPicture('rock');
       roundSituation.textContent = 'You LOST this round';
       computerWinCount++;
       computerScore.textContent = computerWinCount;
       setTimeout(nextRound, 2000);
       return computerWinCount;
     } else if (computerChoice === "paper") {
-      changeComputerPictureToPaper();
+      changeComputerPicture('paper');
       roundSituation.textContent = 'You WON this round';
       playerWinCount++;
       playerScore.textContent = playerWinCount;
       setTimeout(nextRound, 2000);
       return playerWinCount;
     } else if (computerChoice === "scissors") {
-      changeComputerPictureToScissors();
+      changeComputerPicture('scissors');
       roundSituation.textContent = 'This round was a DRAW';
       drawCount++;
       setTimeout(nextRound, 2000);
@@ -190,37 +189,22 @@ function resetResults() {
 
 function nextRound() {
   roundSituation.textContent = 'Make your choice';
-  changeComputerPictureToQuestionMark();
+  changeComputerPicture('questionMark');
 }
 
-function changeComputerPictureToQuestionMark() {
+function changeComputerPicture(pictureToChange) {
   computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/questionMark.png');
-}
-
-function changeComputerPictureToRock() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/rock.jpg');
-}
-
-function changeComputerPictureToPaper() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/paper.jpg');
-}
-
-function changeComputerPictureToScissors() {
-  computerChoiceImg.removeAttribute('src');
-  computerChoiceImg.setAttribute('src', '/images/scissors.jpg');
+  computerChoiceImg.setAttribute('src', '/images/' + pictureToChange + '.png');
 }
 
 function toggleChoiceButtons(option) {
   if (option === 'enabled') {
-    document.getElementById('rockChoice').disabled = false;
-    document.getElementById('paperChoice').disabled = false;
-    document.getElementById('scissorsChoice').disabled = false;
+    document.getElementById('rockChoiceButton').disabled = false;
+    document.getElementById('paperChoiceButton').disabled = false;
+    document.getElementById('scissorsChoiceButton').disabled = false;
   } else if (option === 'disabled') {
-    document.getElementById('rockChoice').disabled = true;
-    document.getElementById('paperChoice').disabled = true;
-    document.getElementById('scissorsChoice').disabled = true;
+    document.getElementById('rockChoiceButton').disabled = true;
+    document.getElementById('paperChoiceButton').disabled = true;
+    document.getElementById('scissorsChoiceButton').disabled = true;
   }
 }
