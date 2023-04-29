@@ -63,55 +63,39 @@ let drawCount = 0;
 function playGame() {
   getComputerChoice();
 
-  if (playerChoice === 'rock' && computerChoice === 'paper') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You LOST this round';
-    computerWinCount++;
-    computerScore.textContent = computerWinCount;
-    setTimeout(nextRound, 2000);
-    return computerWinCount;
-  } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You WON this round';
-    playerWinCount++;
-    playerScore.textContent = playerWinCount;
-    setTimeout(nextRound, 2000);
-    return playerWinCount;
-  } else if (playerChoice === 'paper' && computerChoice === 'rock') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You WON this round';
-    playerWinCount++;
-    playerScore.textContent = playerWinCount;
-    setTimeout(nextRound, 2000);
-    return playerWinCount;
-  } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You LOST this round';
-    computerWinCount++;
-    computerScore.textContent = computerWinCount;
-    setTimeout(nextRound, 2000);
-    return computerWinCount;
-  } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You LOST this round';
-    computerWinCount++;
-    computerScore.textContent = computerWinCount;
-    setTimeout(nextRound, 2000);
-    return computerWinCount;
-  } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'You WON this round';
-    playerWinCount++;
-    playerScore.textContent = playerWinCount;
-    setTimeout(nextRound, 2000);
-    return playerWinCount;
-  } else if (playerChoice === computerChoice) {
-    changeComputerPicture(computerChoice);
-    roundSituation.textContent = 'This round was a DRAW';
-    drawCount++;
-    setTimeout(nextRound, 2000);
-    return drawCount;
-  }
+  if (playerChoice === 'rock' && computerChoice === 'paper') lostRound(computerChoice);
+  if (playerChoice === 'rock' && computerChoice === 'scissors') wonRound(computerChoice);
+  if (playerChoice === 'paper' && computerChoice === 'rock') wonRound(computerChoice);
+  if (playerChoice === 'paper' && computerChoice === 'scissors') lostRound(computerChoice);
+  if (playerChoice === 'scissors' && computerChoice === 'rock') lostRound(computerChoice);
+  if (playerChoice === 'scissors' && computerChoice === 'paper') wonRound(computerChoice);
+  if (playerChoice === computerChoice) drawRound(computerChoice);
+}
+
+function lostRound(computerChoice) {
+  changeComputerPicture(computerChoice);
+  roundSituation.textContent = 'You LOST this round';
+  computerWinCount++;
+  computerScore.textContent = computerWinCount;
+  setTimeout(nextRound, 2000);
+  return computerWinCount;
+}
+
+function wonRound(computerChoice) {
+  changeComputerPicture(computerChoice);
+  roundSituation.textContent = 'You WON this round';
+  playerWinCount++;
+  playerScore.textContent = playerWinCount;
+  setTimeout(nextRound, 2000);
+  return playerWinCount;
+}
+
+function drawRound(computerChoice) {
+  changeComputerPicture(computerChoice);
+  roundSituation.textContent = 'This round was a DRAW';
+  drawCount++;
+  setTimeout(nextRound, 2000);
+  return drawCount;
 }
 
 function showGameResults() {
