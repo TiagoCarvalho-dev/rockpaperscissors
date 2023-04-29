@@ -1,4 +1,3 @@
-const submitButton = document.querySelector('#submitButton');
 const getPlayerName = document.querySelector('#getPlayerName');
 const playerName = document.querySelector('#playerName');
 const playerInfo = document.querySelector('.playerInfo');
@@ -7,10 +6,6 @@ const welcomeMessage = document.querySelector('#welcomeMessage');
 const welcomeMessage2 = document.querySelector('.welcomeMessage2');
 const gamePlayArea = document.querySelector('.gamePlayArea');
 const matchResult = document.querySelector('.matchResult');
-
-const rockChoiceButton = document.querySelector('#rockChoiceButton');
-const paperChoiceButton = document.querySelector('#paperChoiceButton');
-const scissorsChoiceButton = document.querySelector('#scissorsChoiceButton');
 
 const roundSituation = document.querySelector('.roundSituation');
 const computerChoiceImg = document.querySelector('#computerChoiceImg');
@@ -21,7 +16,7 @@ const finalScore = document.querySelector('.finalScore');
 const finalResults = document.querySelector('.finalResults');
 const welcomeContainer = document.querySelector('.welcomeContainer');
 
-submitButton.addEventListener('click', () => {
+document.querySelector('#submitButton').addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
   welcomeMessage.textContent = "This will be a best out of five match.";
@@ -29,28 +24,16 @@ submitButton.addEventListener('click', () => {
   gamePlayArea.classList.toggle('hidden');
 });
 
-let playerChoice;
+document.querySelector('#rockChoiceButton').addEventListener('click', () => handleClickEvent('rock'));
+document.querySelector('#paperChoiceButton').addEventListener('click', () => handleClickEvent('paper'));
+document.querySelector('#scissorsChoiceButton').addEventListener('click', () => handleClickEvent('scissors'));
 
-rockChoiceButton.addEventListener('click', () => {
-  playerChoice = 'rock';
+function handleClickEvent(chosenElement) {
+  playerChoice = chosenElement;
   toggleChoiceButtons('disabled');
   playGame();
   showGameResults();
-});
-
-paperChoiceButton.addEventListener('click', () => {
-  playerChoice = 'paper';
-  toggleChoiceButtons('disabled');
-  playGame();
-  showGameResults();
-});
-
-scissorsChoiceButton.addEventListener('click', () => {
-  playerChoice = 'scissors';
-  toggleChoiceButtons('disabled');
-  playGame();
-  showGameResults();
-});
+}
 
 playAgainButton.addEventListener('click', () => {
   toggleFinalResultsElements();
@@ -58,6 +41,7 @@ playAgainButton.addEventListener('click', () => {
   resetResults();
 });
 
+let playerChoice;
 let computerChoice;
 
 function getComputerChoice() {
