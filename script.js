@@ -41,6 +41,7 @@ playAgainButton.addEventListener('click', () => {
   toggleFinalResultsElements();
   changeComputerPicture('questionMark');
   resetResults();
+  toggleChoiceButtons('enabled');
 });
 
 let computerChoice;
