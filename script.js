@@ -19,7 +19,7 @@ const welcomeContainer = document.querySelector('.welcomeContainer');
 document.querySelector('#submitButton').addEventListener('click', () => {
   playerName.textContent = getPlayerName.value;
   section2.removeChild(playerInfo);
-  welcomeMessage.textContent = "This will be a best out of five match.";
+  welcomeMessage.textContent = 'This will be a best out of five match.';
   welcomeMessage2.textContent = "Have Fun!";
   gamePlayArea.classList.toggle('hidden');
 });
@@ -27,6 +27,8 @@ document.querySelector('#submitButton').addEventListener('click', () => {
 document.querySelector('#rockChoiceButton').addEventListener('click', () => handleClickEvent('rock'));
 document.querySelector('#paperChoiceButton').addEventListener('click', () => handleClickEvent('paper'));
 document.querySelector('#scissorsChoiceButton').addEventListener('click', () => handleClickEvent('scissors'));
+
+let playerChoice;
 
 function handleClickEvent(chosenElement) {
   playerChoice = chosenElement;
@@ -41,20 +43,16 @@ playAgainButton.addEventListener('click', () => {
   resetResults();
 });
 
-let playerChoice;
 let computerChoice;
 
 function getComputerChoice() {
   let getComputerRandomValue = Math.floor(Math.random() * 3);
   if (getComputerRandomValue === 0) {
-    changeComputerPicture('rock');
-    return computerChoice = "rock";
+    return computerChoice = 'rock';
   } else if (getComputerRandomValue === 1) {
-    changeComputerPicture('paper');
-    return computerChoice = "paper";
+    return computerChoice = 'paper';
   } else {
-    changeComputerPicture('scissors');
-    return computerChoice = "scissors";
+    return computerChoice = 'scissors';
   }
 }
 
@@ -65,76 +63,54 @@ let drawCount = 0;
 function playGame() {
   getComputerChoice();
 
-  if (playerChoice === "rock") {
-    if (computerChoice === "rock") {
-      changeComputerPicture('rock');
-      roundSituation.textContent = 'This round was a DRAW';
-      drawCount++;
-      setTimeout(nextRound, 2000);
-      return drawCount;
-    } else if (computerChoice === "paper") {
-      changeComputerPicture('paper');
-      roundSituation.textContent = 'You LOST this round';
-      computerWinCount++;
-      computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
-      return computerWinCount;
-    } else if (computerChoice === "scissors") {
-      changeComputerPicture('scissors');
-      roundSituation.textContent = 'You WON this round';
-      playerWinCount++;
-      playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
-      return playerWinCount;
-    }
-  }
-
-  if (playerChoice === "paper") {
-    if (computerChoice === "rock") {
-      changeComputerPicture('rock');
-      roundSituation.textContent = 'You WON this round';
-      playerWinCount++;
-      playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
-      return playerWinCount;
-    } else if (computerChoice === "paper") {
-      changeComputerPicture('paper');
-      roundSituation.textContent = 'This round was a DRAW';
-      drawCount++;
-      setTimeout(nextRound, 2000);
-      return drawCount;
-    } else if (computerChoice === "scissors") {
-      changeComputerPicture('scissors');
-      roundSituation.textContent = 'You LOST this round';
-      computerWinCount++;
-      computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
-      return computerWinCount;
-    }
-  }
-
-  if (playerChoice === "scissors") {
-    if (computerChoice === "rock") {
-      changeComputerPicture('rock');
-      roundSituation.textContent = 'You LOST this round';
-      computerWinCount++;
-      computerScore.textContent = computerWinCount;
-      setTimeout(nextRound, 2000);
-      return computerWinCount;
-    } else if (computerChoice === "paper") {
-      changeComputerPicture('paper');
-      roundSituation.textContent = 'You WON this round';
-      playerWinCount++;
-      playerScore.textContent = playerWinCount;
-      setTimeout(nextRound, 2000);
-      return playerWinCount;
-    } else if (computerChoice === "scissors") {
-      changeComputerPicture('scissors');
-      roundSituation.textContent = 'This round was a DRAW';
-      drawCount++;
-      setTimeout(nextRound, 2000);
-      return drawCount;
-    }
+  if (playerChoice === 'rock' && computerChoice === 'paper') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You LOST this round';
+    computerWinCount++;
+    computerScore.textContent = computerWinCount;
+    setTimeout(nextRound, 2000);
+    return computerWinCount;
+  } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You WON this round';
+    playerWinCount++;
+    playerScore.textContent = playerWinCount;
+    setTimeout(nextRound, 2000);
+    return playerWinCount;
+  } else if (playerChoice === 'paper' && computerChoice === 'rock') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You WON this round';
+    playerWinCount++;
+    playerScore.textContent = playerWinCount;
+    setTimeout(nextRound, 2000);
+    return playerWinCount;
+  } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You LOST this round';
+    computerWinCount++;
+    computerScore.textContent = computerWinCount;
+    setTimeout(nextRound, 2000);
+    return computerWinCount;
+  } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You LOST this round';
+    computerWinCount++;
+    computerScore.textContent = computerWinCount;
+    setTimeout(nextRound, 2000);
+    return computerWinCount;
+  } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'You WON this round';
+    playerWinCount++;
+    playerScore.textContent = playerWinCount;
+    setTimeout(nextRound, 2000);
+    return playerWinCount;
+  } else if (playerChoice === computerChoice) {
+    changeComputerPicture(computerChoice);
+    roundSituation.textContent = 'This round was a DRAW';
+    drawCount++;
+    setTimeout(nextRound, 2000);
+    return drawCount;
   }
 }
 
