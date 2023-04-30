@@ -13,7 +13,7 @@ const finalResults = document.querySelector('.finalResults');
 const matchResult = document.querySelector('.matchResult');
 const finalScore = document.querySelector('.finalScore');
 const playAgainButton = document.querySelector('#playAgainButton');
-const computerChoiceImg = document.querySelector('#computerChoiceImg');
+const computerChoiceImg = document.querySelector('.computerChoiceImg');
 
 
 document.querySelector('#submitButton').addEventListener('click', () => {
@@ -24,15 +24,16 @@ document.querySelector('#submitButton').addEventListener('click', () => {
   gamePlayArea.classList.toggle('hidden');
 });
 
-document.querySelector('#rockChoiceButton').addEventListener('click', () => handleClickEvent('rock'));
-document.querySelector('#paperChoiceButton').addEventListener('click', () => handleClickEvent('paper'));
-document.querySelector('#scissorsChoiceButton').addEventListener('click', () => handleClickEvent('scissors'));
+document.querySelector('.rockChoiceButton').addEventListener('click', () => handleClickEvent('rock'));
+document.querySelector('.paperChoiceButton').addEventListener('click', () => handleClickEvent('paper'));
+document.querySelector('.scissorsChoiceButton').addEventListener('click', () => handleClickEvent('scissors'));
 
 let playerChoice;
 
 function handleClickEvent(chosenElement) {
   playerChoice = chosenElement;
   toggleChoiceButtons('disabled');
+  togglePlayerChoiceHighlight(playerChoice);
   playGame();
   showGameResults();
 }
@@ -40,8 +41,10 @@ function handleClickEvent(chosenElement) {
 playAgainButton.addEventListener('click', () => {
   toggleFinalResultsElements();
   changeComputerPicture('questionMark');
+  toggleComputerChoiceHighlight();
   resetResults();
   toggleChoiceButtons('enabled');
+  togglePlayerChoiceHighlight(playerChoice);
 });
 
 let computerChoice;
@@ -75,6 +78,7 @@ function playGame() {
 
 function lostRound(computerChoice) {
   changeComputerPicture(computerChoice);
+  toggleComputerChoiceHighlight();
   roundSituation.textContent = 'Round LOST';
   computerWinCount++;
   computerScore.textContent = computerWinCount;
@@ -84,6 +88,7 @@ function lostRound(computerChoice) {
 
 function wonRound(computerChoice) {
   changeComputerPicture(computerChoice);
+  toggleComputerChoiceHighlight();
   roundSituation.textContent = 'Round WON';
   playerWinCount++;
   playerScore.textContent = playerWinCount;
@@ -93,6 +98,7 @@ function wonRound(computerChoice) {
 
 function drawRound(computerChoice) {
   changeComputerPicture(computerChoice);
+  toggleComputerChoiceHighlight();
   roundSituation.textContent = 'Round DRAW';
   drawCount++;
   setTimeout(nextRound, 2000);
@@ -113,8 +119,11 @@ function showGameResults() {
       finalScore.textContent = getPlayerName.value + ' ' + playerWinCount + ' X ' + computerWinCount + ' Computer | Draws: ' + drawCount;
     }, 2000);
   } else {
-  setTimeout( () => toggleChoiceButtons('enabled'), 2000);
-  return
+  setTimeout( () => {
+    toggleChoiceButtons('enabled');
+    togglePlayerChoiceHighlight(playerChoice);
+    toggleComputerChoiceHighlight();
+  }, 2000);
   }
 }
 
@@ -145,12 +154,20 @@ function changeComputerPicture(pictureToChange) {
 
 function toggleChoiceButtons(option) {
   if (option === 'enabled') {
-    document.getElementById('rockChoiceButton').disabled = false;
-    document.getElementById('paperChoiceButton').disabled = false;
-    document.getElementById('scissorsChoiceButton').disabled = false;
+    document.querySelector('.rockChoiceButton').disabled = false;
+    document.querySelector('.paperChoiceButton').disabled = false;
+    document.querySelector('.scissorsChoiceButton').disabled = false;
   } else if (option === 'disabled') {
-    document.getElementById('rockChoiceButton').disabled = true;
-    document.getElementById('paperChoiceButton').disabled = true;
-    document.getElementById('scissorsChoiceButton').disabled = true;
+    document.querySelector('.rockChoiceButton').disabled = true;
+    document.querySelector('.paperChoiceButton').disabled = true;
+    document.querySelector('.scissorsChoiceButton').disabled = true;
   }
+}
+
+function togglePlayerChoiceHighlight(object) {
+  document.querySelector('.' + object + 'ChoiceButton').classList.toggle('selectedChoice');
+}
+
+function toggleComputerChoiceHighlight() {
+  computerChoiceImg.classList.toggle('selectedChoice');
 }
