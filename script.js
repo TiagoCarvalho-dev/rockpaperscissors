@@ -75,7 +75,7 @@ function playGame() {
 
 function lostRound(computerChoice) {
   changeComputerPicture(computerChoice);
-  roundSituation.textContent = 'You LOST this round';
+  roundSituation.textContent = 'Round LOST';
   computerWinCount++;
   computerScore.textContent = computerWinCount;
   setTimeout(nextRound, 2000);
@@ -84,7 +84,7 @@ function lostRound(computerChoice) {
 
 function wonRound(computerChoice) {
   changeComputerPicture(computerChoice);
-  roundSituation.textContent = 'You WON this round';
+  roundSituation.textContent = 'Round WON';
   playerWinCount++;
   playerScore.textContent = playerWinCount;
   setTimeout(nextRound, 2000);
@@ -93,7 +93,7 @@ function wonRound(computerChoice) {
 
 function drawRound(computerChoice) {
   changeComputerPicture(computerChoice);
-  roundSituation.textContent = 'This round was a DRAW';
+  roundSituation.textContent = 'Round DRAW';
   drawCount++;
   setTimeout(nextRound, 2000);
   return drawCount;
